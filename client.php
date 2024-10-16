@@ -24,18 +24,19 @@ try{
             "id" => $respuesta["id"],
             "nombre" => $respuesta["departamento"]
         );
+    }
         $arr_headers = getallheaders();
         if($arr_headers["Accept"] == "application/xml"){
             $documento = creaxml("departamento", $arreglo);
             header("Content-Type: application/json");
             echo($documento);
-        }elseif($arr_headers["Accept"]=="Application/json"){
-            header("Content-Type: Application(json");
+        }elseif($arr_headers["Accept"]=="application/json"){
+            header("Content-Type: application/json");
             echo(json_encode($respuestas));
         }else{
             echo("ESPECIFIQUE EL FORMATO DE DATOS QUE USTED ESPERA");
         }
-    }
+
 }catch(Exception $e){
     echo('ERROR: '.$e->getMessage());
 }
